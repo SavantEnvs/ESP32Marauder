@@ -1,0 +1,11 @@
+project: savantenvs/ESP32Marauder
+target: fuzz_remote_id
+image: $MAYHEM_DOCKER_REGISTRY/savantenvs/esp32marauder:latest
+duration: 1200
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_remote_id/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/build/fuzz_remote_id
+    libfuzzer: true
+    timeout: 5
